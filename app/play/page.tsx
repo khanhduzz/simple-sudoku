@@ -15,7 +15,7 @@ const PlaySudoku = () => {
         const abortController = new AbortController();
         const fetchData = async () => {
             try {
-                const res = await fetch("http://localhost:3000/api/play", {
+                const res = await fetch(`/api/play`, {
                     signal: abortController.signal,
                 });
                 if (!res.ok) {
