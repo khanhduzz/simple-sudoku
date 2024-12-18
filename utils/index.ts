@@ -10,7 +10,8 @@ export const baseSudoku = [
   [".", ".", ".", ".", ".", ".", ".", ".", "."],
 ];
 
-export function solveSudoku(board: string[][]): string[][] {
+export function solveSudoku(input: string[][]): string[][] {
+  const board = input.map((row) => row.map((cell) => cell));
   const n = board.length;
   const row: number[][] = Array.from({ length: n }, () => Array(n).fill(0));
   const col: number[][] = Array.from({ length: n }, () => Array(n).fill(0));

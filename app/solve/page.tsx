@@ -21,7 +21,7 @@ const SolveSudoku = () => {
         }
     }
 
-    function handleReset() {
+    function handleReset() {        
         setData(baseSudoku);
     }
 

@@ -3,17 +3,17 @@
 import React from 'react'
 
 type Props = {
-  data:any[][]
+  data: any[][]
   setData: any
 }
 
-const GridSudoku = ({data, setData}: Props) => {
+const GridSudoku = ({ data, setData }: Props) => {
   const gridSize = 450;
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, rowIndex: number, colIndex: number) => {
     const value = e.target.value;
     if (value === "" || /^[1-9]$/.test(value)) {
-      const newData = [...data];
+      const newData = data.map(row => row.map(d => d));
       newData[rowIndex][colIndex] = value === "" ? "." : value;
       setData(newData);
     }
@@ -31,7 +31,7 @@ const GridSudoku = ({data, setData}: Props) => {
       >
         {data.map((row, rowIndex) =>
           row.map((col, colIndex) => {
-            
+
             const isTopBorder = rowIndex % 3 === 0;
             const isLeftBorder = colIndex % 3 === 0;
             const isBottomBorder = rowIndex === 8;
