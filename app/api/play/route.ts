@@ -1,13 +1,6 @@
-import { SudokuData } from "@/types";
+import { getSudoku } from "@/utils/getSudoku";
 
 export async function GET() {
   const data = await getSudoku();
   return Response.json({ data });
 }
-
-export const getSudoku = async () => {
-  const result = await fetch("https://you-do-sudoku-api.vercel.app/api");
-  const body: SudokuData = await result.json();
-
-  return body;
-};
