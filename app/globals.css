@@ -28,6 +28,19 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
+}
+
+.button {
+  @apply text-lg px-3 py-2 border rounded-lg bg-none text-black text-center items-center
+  hover:bg-gray-300;
+}
+
+.button-green {
+  @apply border-green-700 bg-green-100 text-black hover:bg-green-300;
+}
+
+.button-red {
+  @apply border-red-700 bg-red-100 text-black hover:bg-red-300;
 }

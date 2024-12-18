@@ -1,49 +1,14 @@
 "use client";
 
-import { isValidSudoku, solveSudoku } from "@/utils";
-import { useState } from "react";
+import React from 'react'
 
-const GridSudoku: React.FC = () => {
-  const [data, setData] = useState<string[][]>([
-    [".", ".", ".", ".", ".", ".", ".", ".", "."],
-    [".", ".", ".", ".", ".", ".", ".", ".", "."],
-    [".", ".", ".", ".", ".", ".", ".", ".", "."],
-    [".", ".", ".", ".", ".", ".", ".", ".", "."],
-    [".", ".", ".", ".", ".", ".", ".", ".", "."],
-    [".", ".", ".", ".", ".", ".", ".", ".", "."],
-    [".", ".", ".", ".", ".", ".", ".", ".", "."],
-    [".", ".", ".", ".", ".", ".", ".", ".", "."],
-    [".", ".", ".", ".", ".", ".", ".", ".", "."],
-  ]);
+type Props = {
+  data:any[][]
+  setData: any
+}
 
+const GridSudoku = ({data, setData}: Props) => {
   const gridSize = 450;
-
-  function handleSolve() {
-    try {
-      if (!isValidSudoku(data)) {
-        alert("Sudoku is not valid");
-        return;
-      }
-      const solvedData = solveSudoku(data);
-      setData(solvedData);
-    } catch (error) {
-      console.error("Error solving Sudoku:", error);
-    }
-  }
-
-  function handleReset() {
-    setData([
-      [".", ".", ".", ".", ".", ".", ".", ".", "."],
-      [".", ".", ".", ".", ".", ".", ".", ".", "."],
-      [".", ".", ".", ".", ".", ".", ".", ".", "."],
-      [".", ".", ".", ".", ".", ".", ".", ".", "."],
-      [".", ".", ".", ".", ".", ".", ".", ".", "."],
-      [".", ".", ".", ".", ".", ".", ".", ".", "."],
-      [".", ".", ".", ".", ".", ".", ".", ".", "."],
-      [".", ".", ".", ".", ".", ".", ".", ".", "."],
-      [".", ".", ".", ".", ".", ".", ".", ".", "."],
-    ]);
-  }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, rowIndex: number, colIndex: number) => {
     const value = e.target.value;
@@ -94,20 +59,7 @@ const GridSudoku: React.FC = () => {
           })
         )}
       </div>
-      <div className="flex gap-3">
-        <button
-          onClick={handleSolve}
-          className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600"
-        >
-          Solve
-        </button>
-        <button
-          onClick={handleReset}
-          className="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600"
-        >
-          Reset
-        </button>
-      </div>
+
     </div>
   );
 };
